@@ -44,7 +44,7 @@ def get_disable_setup():
 
 
 def get_example_test(tested_func, msg, results, privmsg, admin,
-                     owner, repeat, use_regexp, ignore=[]):
+                     owner, repeat, use_regexp, ignore=None):
     """Get a function that calls ``tested_func`` with fake wrapper and trigger.
 
     :param callable tested_func: a Sopel callable that accepts a
@@ -64,6 +64,8 @@ def get_example_test(tested_func, msg, results, privmsg, admin,
     :return: a test function for ``tested_func``
     :rtype: :term:`function`
     """
+    if ignore is None:
+        ignore = []
     def test(configfactory, botfactory, ircfactory):
         test_config = TEMPLATE_TEST_CONFIG.format(
             name='NickName',
