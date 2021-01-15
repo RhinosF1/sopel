@@ -946,10 +946,10 @@ def blocks(bot, trigger):
         'huh': "I could not figure out what you wanted to do.",
     }
 
-    masks = set(s for s in bot.config.core.host_blocks if s != '')
-    nicks = set(Identifier(nick)
+    masks = {s for s in bot.config.core.host_blocks if s != ''}
+    nicks = {Identifier(nick)
                 for nick in bot.config.core.nick_blocks
-                if nick != '')
+                if nick != ''}
     text = trigger.group().split()
 
     if len(text) == 3 and text[1] == "list":

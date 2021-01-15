@@ -69,7 +69,7 @@ def test_get_nick_id(db):
         assert registered[0].slug == slug and registered[0].canonical == nick
 
     # Check that each nick ended up with a different id
-    assert len(set(test[0] for test in tests)) == len(tests)
+    assert len({test[0] for test in tests}) == len(tests)
 
     # Check that the retrieval actually is idempotent
     for test in tests:

@@ -114,11 +114,9 @@ def _clean_callable_examples(examples):
     ]
 
     return tuple(
-        dict(
-            (key, value)
+        {key: value
             for key, value in example.items()
-            if key in valid_keys
-        )
+            if key in valid_keys}
         for example in examples
     )
 

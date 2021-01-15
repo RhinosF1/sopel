@@ -2681,7 +2681,7 @@ def test_url_callback_from_callable_lazy(mockbot):
     results = list(rule.match(mockbot, pretrigger))
 
     assert len(results) == 1, 'Exactly 1 rule must match'
-    print(list(result.group(0) for result in results))
+    print([result.group(0) for result in results])
     assert all(result.group(0) == link_1 for result in results)
 
     # match on the help.example.com link

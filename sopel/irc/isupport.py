@@ -71,7 +71,7 @@ def _parse_chanmodes(value):
 
 def _parse_elist(value):
     # letters are case-insensitives
-    return tuple(sorted(set(letter.upper() for letter in value)))
+    return tuple(sorted({letter.upper() for letter in value}))
 
 
 def _parse_extban(value):
@@ -173,10 +173,9 @@ class ISupport(object):
     .. __: https://modern.ircdocs.horse/#rplisupport-parameters
     """
     def __init__(self, **kwargs):
-        self.__isupport = dict(
-            (key.upper(), value)
+        self.__isupport = {key.upper(): value
             for key, value in kwargs.items()
-            if not key.startswith('-'))
+            if not key.startswith('-')}
 
     def __getitem__(self, key):
         key_ci = key.upper()
@@ -222,10 +221,8 @@ class ISupport(object):
             False
 
         """
-        kwargs_upper = dict(
-            (key.upper(), value)
-            for key, value in kwargs.items()
-        )
+        kwargs_upper = {key.upper(): value
+            for key, value in kwargs.items()}
         kept = (
             (key, value)
             for key, value in self.__isupport.items()
