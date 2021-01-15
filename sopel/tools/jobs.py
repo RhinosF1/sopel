@@ -302,10 +302,8 @@ class Job(object):
         now = time.time()
         self.intervals = set(intervals)
         """Set of intervals at which to execute the job."""
-        self.next_times = dict(
-            (interval, now + interval)
-            for interval in self.intervals
-        )
+        self.next_times = {interval: now + interval
+            for interval in self.intervals}
         """Tracking of when to execute the job next time."""
 
         # meta

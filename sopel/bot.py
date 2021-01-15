@@ -180,11 +180,9 @@ class Sopel(irc.AbstractBot):
             for command in commands.values()
         )
 
-        return dict(
-            (name, (doc.splitlines(), [u['text'] for u in usages]))
+        return {name: (doc.splitlines(), [u['text'] for u in usages])
             for command, doc, usages in commands
-            for name in ((command.name,) + command.aliases)
-        )
+            for name in ((command.name,) + command.aliases)}
 
     @property
     def hostmask(self):

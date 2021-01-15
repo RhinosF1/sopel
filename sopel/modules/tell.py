@@ -250,12 +250,10 @@ def message(bot, trigger):
 
     with bot.memory['tell_lock']:
         # pop reminders for nick
-        reminders = list(
-            reminder
+        reminders = [reminder
             for tellee in tellees
             for reminder in get_nick_reminders(
-                bot.memory['reminders'].pop(tellee, []), nick)
-        )
+                bot.memory['reminders'].pop(tellee, []), nick)]
 
     # check if there are reminders to send
     if not reminders:
