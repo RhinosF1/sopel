@@ -424,7 +424,7 @@ def track_modes(bot, trigger):
             modes.append(sign + char)
 
     # Try to map modes to arguments, after sanity-checking
-    if len(modes) != len(nicks) or not all([nick.is_nick() for nick in nicks]):
+    if len(modes) != len(nicks) or not all(nick.is_nick() for nick in nicks):
         # Something fucky happening, like unusual batching of non-privilege
         # modes together with the ones we expect. Way easier to just re-WHO
         # than try to account for non-standard parameter-taking modes.

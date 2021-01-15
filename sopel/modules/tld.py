@@ -303,11 +303,9 @@ def gettld(bot, trigger):
         _update_tld_data(bot, 'list')
     tld_list = bot.memory['tld_list_cache']
 
-    if not any([
-        name in tld_list
+    if not any(name in tld_list
         for name
-        in [tld, idna.ToASCII(tld).decode('utf-8')]
-    ]):
+        in [tld, idna.ToASCII(tld).decode('utf-8')]):
         bot.reply(
             "The top-level domain '{}' is not in IANA's list of valid TLDs."
             .format(tld))
